@@ -1,0 +1,8 @@
+project_id = "leai"
+
+[api]
+port = 54321
+
+[db]
+port = 54322
+major_version = 15

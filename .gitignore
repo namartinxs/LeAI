@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.nx/
+.env
+.env.*
+!.env.example
+apps/backend/supabase/.temp/
+apps/backend/supabase/.branches/
+*.log
+.DS_Store

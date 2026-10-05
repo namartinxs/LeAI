@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "tags": ["scope:backend", "layer:app"],
+  "targets": {
+    "start": {
+      "executor": "nx:run-commands",
+      "options": { "command": "npx supabase start", "cwd": "apps/backend" }
+    },
+    "stop": {
+      "executor": "nx:run-commands",
+      "options": { "command": "npx supabase stop", "cwd": "apps/backend" }
+    },
+    "serve-functions": {
+      "executor": "nx:run-commands",
+      "options": { "command": "npx supabase functions serve", "cwd": "apps/backend" }
+    },
+    "db-reset": {
+      "executor": "nx:run-commands",
+      "options": { "command": "npx supabase db reset", "cwd": "apps/backend" }
+    }
+  }
+}
