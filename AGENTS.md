@@ -155,3 +155,13 @@ tipos/domínio).
   já existe até que a necessidade real apareça.
 - Ícones do PWA são placeholders gerados por `node scripts/gen-icons.mjs`; substituir por arte final antes de publicar.
 - Pendências conhecidas: qualidade do OCR em fotos reais (Tesseract) e autenticação (se necessária).
+
+## Agent skills
+
+### Issue tracker
+
+Issues e specs vivem como arquivos markdown em `.scratch/`. Veja `docs/agents/issue-tracker.md`.
+
+### Domain docs
+
+Layout single-context: `CONTEXT.md` + `docs/adr/` na raiz do repo. Veja `docs/agents/domain.md`.

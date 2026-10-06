@@ -20,6 +20,7 @@ export function useReadingController(
   const [blocks, setBlocks] = useState<readonly ReadingBlock[]>([]);
   const [activeBlock, setActiveBlock] = useState(0);
   const [activeWord, setActiveWord] = useState(-1);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   const readFrom = useCallback(
     (all: readonly ReadingBlock[], start: number) => {
@@ -44,6 +45,10 @@ export function useReadingController(
   const readImage = useCallback(
     async (image: Blob) => {
       setStatus('extracting');
+      setImageUrl((prev) => {
+        if (prev) URL.revokeObjectURL(prev);
+        return URL.createObjectURL(image);
+      });
       try {
         const next = createReadingBlocks(await extractor.extract(image));
         setBlocks(next);
@@ -61,7 +66,11 @@ export function useReadingController(
     setBlocks([]);
     setActiveWord(-1);
     setStatus('idle');
+    setImageUrl((prev) => {
+      if (prev) URL.revokeObjectURL(prev);
+      return null;
+    });
   }, [player]);
 
-  return { status, blocks, activeBlock, activeWord, readImage, stop };
+  return { status, blocks, activeBlock, activeWord, imageUrl, readImage, stop };
 }
